@@ -1,71 +1,64 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import PropTypes from "prop-types";
+import styled from "styled-components";
 import { InfoCircle } from "styled-icons/fa-solid/InfoCircle";
 import { AlignLeft } from "styled-icons/fa-solid/AlignLeft";
+import {
+  Box,
+  Typography,
+  Textarea,
+  colorYik,
+  colorVariant
+} from "@smooth-ui/core-sc";
 
 // Build a React component for our FreeText question type
 const FreeText = ({ maxLength, initialText }) => {
   const threshold = maxLength / 10; // right now we fix this at 10% MaxLength
 
-  // these become references to elements when the component is rendered
-  let message, counter, ta;
+  const [badgeVariant, setBadgeVariant] = useState("info");
+  const [value, setValue] = useState(initialText);
+  useEffect(() => setValue(initialText), [initialText]);
 
   // Input handler to update the shiny character limit counter
-  const handleInput = e => {
-    const count = maxLength - ta.value.length;
-    counter.innerHTML = count;
+  const handleInput = ({ target: { value: v } }) => {
+    setValue(v);
+    const count = maxLength - v.length;
     if (count === 0) {
-      message.classList.remove("badge-warning");
-      message.classList.remove("badge-info");
-      message.classList.add("badge-danger");
+      setBadgeVariant("danger");
     } else if (count <= threshold) {
-      message.classList.remove("badge-info");
-      message.classList.remove("badge-danger");
-      message.classList.add("badge-warning");
+      setBadgeVariant("warning");
     } else {
-      message.classList.remove("badge-danger");
-      message.classList.remove("badge-warning");
-      message.classList.add("badge-info");
+      setBadgeVariant("info");
     }
   };
 
-  // sadly we don't use JSX in here as this file doesn't go through babel :(
-  return React.createElement(
-    "div",
-    { className: "form-group" },
-    React.createElement(
-      "div",
-      {
-        className: "badge badge-info mb-1",
-        ref: function ref(e) {
-          return (message = e);
-        }
-      },
-      React.createElement("span", { className: "fas fa-fw fa-info-circle" }),
-      React.createElement(InfoCircle, { size: "1em" }),
-      "Characters remaining\xA0",
-      React.createElement(
-        "span",
-        {
-          ref: function ref(e) {
-            return (counter = e);
-          }
-        },
-        maxLength - initialText.length
-      ),
-      "/",
-      maxLength
-    ),
-    React.createElement("textarea", {
-      className: "form-control",
-      name: "FreeText",
-      maxLength: maxLength,
-      defaultValue: initialText,
-      ref: function ref(e) {
-        return (ta = e);
-      },
-      onInput: handleInput
+  // TODO: take this re-usably from the Survey Platform's UI, one day...
+  const Badge = styled(Typography).attrs(
+    ({ backgroundColor = "info", ...p }) => ({
+      display: "inline",
+      px: 1,
+      borderRadius: 8,
+      textAlign: "center",
+      backgroundColor: backgroundColor,
+      color: colorYik(colorVariant(backgroundColor)(p))(p)
     })
+  )``;
+
+  return (
+    <Box display="flex" flexDirection="column">
+      <Box display="flex" p=".1em">
+        <Badge p=".2em" backgroundColor={badgeVariant}>
+          <InfoCircle size="1em" /> Characters remaining:{" "}
+          {maxLength - value.length}/{maxLength}
+        </Badge>
+      </Box>
+      <Textarea
+        value={value}
+        maxLength={maxLength}
+        name="FreeText"
+        onInput={handleInput}
+      />
+    </Box>
   );
 };
 

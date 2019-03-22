@@ -48,18 +48,18 @@ For more detail on the bundling requirements and how this repo meets them, read 
 
 The bundle process needs to obey the following rules:
 
-- (TODO: Transpile JSX and modern features to run in DECSYS supported browsers)
+- Transpile JSX and modern features to run in DECSYS supported browsers
   - leave ES Modules intact
 - Treat the following npm packages as globals (as the Survey Platform provides a single instance of them for component use):
   - React
-  - PropTypes
+  - ReactDOM
   - Styled Components
 - Bundle into a single file including npm dependencies (except the globals)
 - The final file must export as per the rules in `1. Exports` above
 
 ### How this repo does it
 
-- (TODO: Rollup runs the source through Babel, leaving ES Modules intact)
+- Rollup runs the source through Babel, leaving ES Modules intact
 - Rollup walks the ESM dependencies, including npm packages
   - Rollup tree shakes wherever it can :)
 - Rollup replaces the appropriate globals
