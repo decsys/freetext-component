@@ -61,7 +61,7 @@ const FreeText = ({ maxLength, initialText, logResults }) => {
         value={value}
         maxLength={maxLength}
         name="FreeText"
-        onInput={handleInput}
+        onChange={handleInput}
         onBlur={handleBlur}
       />
     </Box>
