@@ -1,7 +1,7 @@
 {
   "name": "freetext",
   "componentName": "FreeText",
-  "version": "0.9.0",
+  "version": "0.10.0",
   "description": "The FreeText Question Component that ships with the DECSYS Survey Platform",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
@@ -14,13 +14,14 @@
   "license": "UNLICENSED",
   "devDependencies": {
     "@babel/core": "^7.4.0",
+    "@babel/preset-env": "^7.4.4",
+    "@babel/preset-react": "^7.0.0",
     "@storybook/addon-actions": "^5.0.11",
     "@storybook/addon-knobs": "^5.0.11",
     "@storybook/addon-links": "^5.0.3",
     "@storybook/addons": "^5.0.3",
     "@storybook/react": "^5.0.11",
-    "@babel/preset-env": "^7.4.4",
-    "@babel/preset-react": "^7.0.0",
+    "mathjs": "^5.10.3",
     "prop-types": "^15.7.2",
     "react": "^16.8.4",
     "rollup": "^1.7.0",
@@ -36,6 +37,7 @@
   "dependencies": {
     "@decsys/param-types": "^0.3.1",
     "@smooth-ui/core-sc": "^10.0.2",
+    "react-wordcloud": "^1.0.5",
     "styled-icons": "^7.6.0"
   },
   "peerDependencies": {
