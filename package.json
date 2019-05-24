@@ -11,7 +11,7 @@
     "build-storybook": "build-storybook"
   },
   "author": "Jonathan Couldridge <jon@jon.gg>",
-  "license": "UNLICENSED",
+  "license": "AGPL-3.0-only",
   "devDependencies": {
     "@babel/core": "^7.4.0",
     "@babel/preset-env": "^7.4.4",
