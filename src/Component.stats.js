@@ -3,7 +3,7 @@ import * as math from "mathjs";
 import Visualization from "./components/Visualization";
 
 const stats = (_, results) => {
-  const wordCounts = results.map(x => x.text.split(" ").length);
+  const wordCounts = results.map(x => x.text.split(/\s+/).length);
   return {
     visualizations: [
       {
