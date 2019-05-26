@@ -3,9 +3,9 @@ import ReactWordCloud from "react-wordcloud";
 
 const Visualization = ({ values }) => {
   // a value is the whole freetext value submitted
-  const weightedWords = values.reduce((a, {text}) => {
+  const weightedWords = values.reduce((a, { text }) => {
     // split the text into single words
-    const words = text.split(" ");
+    const words = text.split(/\s+/);
 
     words.forEach(w => {
       const word = w.toLowerCase();
