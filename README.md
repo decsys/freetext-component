@@ -1,3 +1,7 @@
+![GitHub](https://img.shields.io/github/license/decsys/freetext-component.svg)
+[![Build Status](https://dev.azure.com/UniversityOfNottingham/DECSYS/_apis/build/status/decsys.freetext-component?branchName=master)](https://dev.azure.com/UniversityOfNottingham/DECSYS/_build/latest?definitionId=172&branchName=master)
+![GitHub release](https://img.shields.io/github/release/decsys/freetext-component.svg)
+
 # DECSYS FreeText Component
 
 This is a simple component that provides a Free Textarea for Survey Participants to enter any response they wish.
