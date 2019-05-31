@@ -50,13 +50,18 @@ const dummyResults = [
 const visualization = stats => () => stats.visualizations[0].component;
 
 const Refresh = ({ initialData, onRefresh, changeData }) => {
-  const [toggle, setToggle] = useState(false);
+  const [toggle, setToggle] = useState(true);
   const [data, setData] = useState(initialData);
-  // the data changes each refresh
+
+  // refresh the data, but it will either be the same
+  // each time, or different each time, based on
+  // `changeData`
   useInterval(() => {
-    if (changeData) setToggle(!toggle);
+    setToggle(!toggle);
     setData(
-      toggle ? [...initialData] : [...initialData, { text: "extra data point" }]
+      changeData && toggle
+        ? [...initialData, { text: "extra data point" }]
+        : [...initialData]
     );
     onRefresh();
   }, 5000);
