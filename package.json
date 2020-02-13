@@ -1,7 +1,7 @@
 {
   "name": "@decsys/freetext-component",
   "componentName": "FreeText",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "The FreeText Question Component that ships with the DECSYS Survey Platform",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
