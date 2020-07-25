@@ -6,6 +6,8 @@
 
 This is a simple component that provides a Free Textarea for Survey Participants to enter any response they wish.
 
+**This repository is for 1.x only. The code has since moved to the [main decsys monorepo](https://github.com/decsys/decsys).**
+
 # Installation
 
 - Download a distributable version from Github Releases
